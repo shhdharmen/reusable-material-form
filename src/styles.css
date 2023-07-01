@@ -2,3 +2,39 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.full-width {
+    width: 100%;
+}
+.form-container {
+    padding: 32px;
+}
+
+.address-form.mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
+    opacity: 0;
+}
+
+.address-form .mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
+    opacity: 0.4;
+}
+
+.address-form > .mat-mdc-text-field-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.address-form > .mat-mdc-text-field-wrapper > div > .mat-mdc-form-field-infix {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.address-form > .mat-mdc-text-field-wrapper > div > .mdc-notched-outline > .mdc-notched-outline__leading {
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+.address-form > .mat-mdc-text-field-wrapper > div > .mdc-notched-outline > .mdc-notched-outline__trailing {
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+}

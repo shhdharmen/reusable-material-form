@@ -11,9 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    AddressFormComponent
-  ],
+  declarations: [AddressFormComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -21,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
+  exports: [AddressFormComponent],
 })
-export class SharedModule { }
+export class SharedModule {}
