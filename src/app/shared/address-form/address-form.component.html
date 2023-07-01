@@ -2,14 +2,14 @@
 (focusout)="onFocusOut($event)" [attr.aria-labelledby]="_formField.getLabelId()" class="address-form-container">
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <input matInput placeholder="Company" formControlName="company" (blur)="onTouched()">
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <input matInput placeholder="First name" formControlName="firstName" (blur)="onTouched()">
             <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
               First name is <strong>required</strong>
@@ -17,7 +17,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <input matInput placeholder="Last name" formControlName="lastName" (blur)="onTouched()">
             <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
               Last name is <strong>required</strong>
@@ -27,7 +27,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <textarea matInput placeholder="Address" formControlName="address" (blur)="onTouched()"></textarea>
             <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
               Address is <strong>required</strong>
@@ -44,14 +44,14 @@
       </div>
       <div class="row" *ngIf="hasUnitNumber">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <textarea matInput placeholder="Address 2" formControlName="address2" (blur)="onTouched()"></textarea>
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <input matInput placeholder="City" formControlName="city" (blur)="onTouched()">
             <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
               City is <strong>required</strong>
@@ -59,7 +59,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <mat-select placeholder="State" formControlName="state" (blur)="onTouched()">
               <mat-option *ngFor="let state of states" [value]="state.abbreviation">
                 {{ state.name }}
@@ -73,7 +73,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field appearance="outline" class="full-width">
             <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode" (blur)="onTouched()">
             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
           </mat-form-field>

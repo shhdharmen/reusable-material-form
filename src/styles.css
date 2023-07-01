@@ -9,14 +9,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 32px;
 }
 
-.address-form.mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
-    opacity: 0;
-}
-
-.address-form .mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
-    opacity: 0.4;
-}
-
 .address-form > .mat-mdc-text-field-wrapper {
     padding-left: 0;
     padding-right: 0;

@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  HostBinding,
   Inject,
   Input,
   OnDestroy,
@@ -10,14 +9,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  AbstractControl,
-  AbstractControlDirective,
   ControlValueAccessor,
   FormBuilder,
-  NG_VALIDATORS,
   NgControl,
-  ValidationErrors,
-  Validator,
   Validators,
 } from '@angular/forms';
 import { Address, AddressForm, AddressShipping } from './address';
@@ -26,7 +20,7 @@ import {
   MatFormField,
   MatFormFieldControl,
 } from '@angular/material/form-field';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { MatSelect } from '@angular/material/select';
