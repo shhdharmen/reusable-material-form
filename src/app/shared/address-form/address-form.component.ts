@@ -1,12 +1,14 @@
 import {
   Component,
   ElementRef,
+  HostBinding,
   Inject,
   Input,
   OnDestroy,
   Optional,
   Self,
   ViewChild,
+  inject,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -33,10 +35,6 @@ import { MatRadioGroup } from '@angular/material/radio';
   providers: [
     { provide: MatFormFieldControl, useExisting: AddressFormComponent },
   ],
-  host: {
-    '[class.address-form-floating]': 'shouldLabelFloat',
-    '[id]': 'id',
-  },
 })
 export class AddressFormComponent
   implements ControlValueAccessor, MatFormFieldControl<Address>, OnDestroy
@@ -61,41 +59,44 @@ export class AddressFormComponent
   @ViewChild('shipping')
   shippingInput!: MatRadioGroup;
 
+  private fb = inject(FormBuilder);
+
   readonly freeShipping: AddressShipping = 'free';
-  addressForm = this._fromBuilder.group<AddressForm>({
-    company: this._fromBuilder.control(null),
-    firstName: this._fromBuilder.control('', {
+
+  addressForm = this.fb.group<AddressForm>({
+    company: this.fb.control(null),
+    firstName: this.fb.control('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    lastName: this._fromBuilder.control('', {
+    lastName: this.fb.control('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    address: this._fromBuilder.control('', {
+    address: this.fb.control('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    address2: this._fromBuilder.control(null),
-    city: this._fromBuilder.control('', {
+    address2: this.fb.control(null),
+    city: this.fb.control('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    state: this._fromBuilder.control('', {
+    state: this.fb.control('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    postalCode: this._fromBuilder.control(0, {
+    postalCode: this.fb.control(0, {
       nonNullable: true,
-      validators: [
+      validators: Validators.compose([
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(5),
-      ],
+      ]),
     }),
-    shipping: this._fromBuilder.control(this.freeShipping, {
+    shipping: this.fb.control(this.freeShipping, {
       nonNullable: true,
-      validators: [Validators.required],
+      validators: Validators.required,
     }),
   });
 
@@ -167,7 +168,7 @@ export class AddressFormComponent
   focused = false;
   touched = false;
   controlType = 'address-form';
-  id = `address-form-${AddressFormComponent.nextId++}`;
+  @HostBinding() id = `address-form-${AddressFormComponent.nextId++}`;
   onChange = (_: any) => {};
   onTouched = () => {};
 
@@ -199,6 +200,7 @@ export class AddressFormComponent
     );
   }
 
+  @HostBinding('class.floating')
   get shouldLabelFloat() {
     return this.focused || !this.empty;
   }
@@ -286,16 +288,12 @@ export class AddressFormComponent
     private _fromBuilder: FormBuilder,
     private _focusMonitor: FocusMonitor,
     private _elementRef: ElementRef<HTMLElement>,
-    @Optional() @Inject(MAT_FORM_FIELD) public _formField: MatFormField,
+    @Optional() public _formField: MatFormField,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
     }
-  }
-
-  onSubmit(): void {
-    alert('Thanks!');
   }
 
   onFocusIn(event: FocusEvent) {

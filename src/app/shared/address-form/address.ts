@@ -6,7 +6,7 @@ export class Address {
     public firstName: string = '',
     public lastName: string = '',
     public address: string = '',
-    public address2: string | null,
+    public address2: string | null = null,
     public city: string = '',
     public state: string = '',
     public postalCode: number = 0,
